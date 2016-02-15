@@ -1,0 +1,55 @@
+﻿<Window x:Class="GenerateCerts.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GenerateCerts" Height="467" Width="785">
+    <Grid>
+        <Menu Height="21" Margin="0,0,0,0" VerticalAlignment="Top" Background="White">
+            <MenuItem Header="About" Click="MenuItem_Click"/>
+        </Menu>
+        <DataGrid x:Name="lst_certs" Margin="10,122,104,10" Background="White" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="FQDN" Binding="{Binding FQDN}" Width="300"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_savepfx" Content="Save PFX" Margin="0,0,10,10" HorizontalAlignment="Right" Width="89" Height="20" VerticalAlignment="Bottom" Click="btn_savepfx_Click"/>
+        <TextBox x:Name="txt_CAServer" HorizontalAlignment="Left" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
+        <Button x:Name="btn_SelectCA" Content="Select CA" HorizontalAlignment="Left" Margin="319,28,0,0" VerticalAlignment="Top" Width="90" Click="btn_SelectCA_Click"/>
+        <PasswordBox x:Name="txt_Pfxpasswd" Margin="0,0,10,35" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="89"/>
+        <TextBlock x:Name="txt_CaType" HorizontalAlignment="Left" Margin="10,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
+        <ComboBox x:Name="cmb_Templates" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="304" IsReadOnly="True" IsEnabled="true" ItemsSource="{Binding Template}" SelectedValuePath="Template" Visibility="Hidden">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Template}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+
+        </ComboBox>
+
+        <ComboBox x:Name="oids" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="304" IsReadOnly="True" IsEnabled="true" ItemsSource="{Binding name}" SelectedValuePath="oid" Visibility="Hidden" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+        <Button x:Name="btn_LoadTempls" Content="Load Templates" HorizontalAlignment="Left" Margin="319,96,0,0" VerticalAlignment="Top" Width="90" Click="btn_LoadTempls_Click" Visibility="Hidden"/>
+
+        <Button x:Name="btn_savecer" Content="Save CER" HorizontalAlignment="Right" Margin="0,0,10,58" Width="89" Height="20" VerticalAlignment="Bottom" Click="btn_savecer_Click"/>
+        <Button x:Name="btn_retrStatus" Content="Retreive Status" HorizontalAlignment="Right" Margin="0,0,10,83" VerticalAlignment="Bottom" Width="89" Click="btn_retrStatus_Click"/>
+        <Button x:Name="btn_generate" Content="Generate" HorizontalAlignment="Right" Margin="0,0,10,108" VerticalAlignment="Bottom" Width="89" Click="btn_generate_Click"/>
+        <TextBlock x:Name="txt_oid" HorizontalAlignment="Left" Margin="319,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="135" Visibility="Visible" Text="{Binding SelectedItem.oid, ElementName=oids, Mode=OneWay}" />
+
+        <ComboBox x:Name="strength" HorizontalAlignment="Right" Margin="0,95,104,0" Width="90" IsReadOnly="True" SelectedValuePath="Content" IsEnabled="true" Visibility="Hidden" Height="22" VerticalAlignment="Top" >
+            <ComboBoxItem Content="1024" />
+            <ComboBoxItem Content="2048" IsSelected="True"/>
+            <ComboBoxItem Content="4096" />
+        </ComboBox>
+        <Button x:Name="btn_loadtxt" Content="Load Text" HorizontalAlignment="Right" Margin="0,0,10,387" VerticalAlignment="Bottom" Width="75" Click="btn_loadtxt_Click"/>
+
+    </Grid>
+</Window>

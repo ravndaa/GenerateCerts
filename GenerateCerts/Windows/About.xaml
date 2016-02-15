@@ -1,0 +1,11 @@
+﻿<Window x:Class="GenerateCerts.Windows.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About" Height="218" Width="330" ResizeMode="NoResize" Topmost="True">
+    <Grid>
+        <Label Content="Made in Norway" HorizontalAlignment="Left" Margin="115,47,0,0" VerticalAlignment="Top"/>
+        <TextBlock Margin="115,10,10,0" TextWrapping="Wrap" Text="GenerateCerts" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="199" VerticalAlignment="Top" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="/GenerateCerts;component/1421206516_314835.ico"/>
+
+    </Grid>
+</Window>
